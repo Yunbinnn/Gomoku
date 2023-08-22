@@ -1,0 +1,4 @@
+﻿  GomokuTest.cpp
+C:\Users\A\Desktop\Gomoku\GomokuTest\GomokuTest.cpp(211,18): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\A\Desktop\Gomoku\GomokuTest\GomokuTest.cpp(211,22): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  GomokuTest.vcxproj -> C:\Users\A\Desktop\Gomoku\GomokuTest\x64\Debug\GomokuTest.exe
