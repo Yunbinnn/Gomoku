@@ -127,17 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="draw.cpp" />
-    <ClCompile Include="game.cpp" />
     <ClCompile Include="gomoku.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="renjurule.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="console.h" />
-    <ClInclude Include="draw.h" />
-    <ClInclude Include="game.h" />
-    <ClInclude Include="gomoku.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
