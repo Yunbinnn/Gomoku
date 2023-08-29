@@ -107,7 +107,7 @@ void cDraw::CursorView(char show)
 // x, y 좌표로 커서를 움직이는 함수
 void cDraw::gotoxy(int x, int y)
 {
-	COORD XY = { x,y };
+	COORD XY = { static_cast<short>(x),static_cast<short>(y) };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), XY);
 }
 
@@ -210,6 +210,7 @@ void cDraw::printData(int& x, int& y, int type)
 	// 각 좌표마다 들어갈 선의 종류가 다르기 때문에
 	// 어떤걸 그려야 할지 좌표를 주고 모양을 가져온다.
 	if (type == LINE) type = getLineNumber(x, y);
+	// 선은 0-8까지 이고, 그 뒤에 돌이 배치되어 있으니 9를 더해준다.
 	else type += 9;
 	gotoxy((x + nX - 1) * 2, y + nY - 1);
 	printf("%s", shape[type]);
@@ -248,7 +249,7 @@ int cDraw::getLineNumber(int x, int y)
 		// x, y가 전부 0이라면 왼쪽 상단 모서리
 		if (y == 1) return 0;
 		// 왼쪽 하단 모서리
-		else if (y == SIZE) return 0;
+		else if (y == SIZE) return 6;
 		// 왼쪽 세로줄
 		else return 3;
 	}
@@ -275,13 +276,13 @@ void cDraw::drawTime(time_t sec)
 {
 	int hh, mm;
 
-	hh = sec / 3600;
-	mm = (sec % 3600) / 60;
+	hh = static_cast<unsigned int>(sec) / 3600;
+	mm = (static_cast<unsigned int>(sec) % 3600) / 60;
 	sec = sec %= 60;
 
 	SetColor(SKY_BLUE);
 	gotoxy(nX * 2 - 2, nY + SIZE + 1);
-	printf("%02d : %02d : %02d", hh, mm, sec);
+	printf("%02d : %02d : %02d", hh, mm, static_cast<unsigned int>(sec));
 	SetColor(GRAY);
 }
 
@@ -343,8 +344,8 @@ void cRenjuRule::SetStone(int x, int y, int nStone)
 // 2배열씩 한쌍이 되어 가로 세로 대각선의 양쪽을 표시한다.
 void cRenjuRule::GetDirTable(int& x, int& y, int nDir)
 {
-	int dx[] = { -1, 1, 0, 0, -1, 1, -1, 1 };
-	int dy[] = { 0, 0, -1, 1, -1, 1, 1, -1 };
+	int dx[] = { -1,  1,  0,  0, -1,   1,  -1,   1 };
+	int dy[] = { 0,  0, -1,  1, -1,   1,   1,  -1 };
 
 	x = dx[nDir];
 	y = dy[nDir];
@@ -439,12 +440,12 @@ bool cRenjuRule::IsFive(int x, int y, int nStone, int nDir)
 	return false;
 }
 
-// 오목인지 검사하는 것 처럼 육목을 검사한다.
+// 오목인지 검사하는 것처럼 육목 이상인지 검사한다.
 bool cRenjuRule::IsSix(int x, int y, int nStone)
 {
 	for (int i = 0; i < 8; i += 2)
 	{
-		if (GetStoneCount(x, y, nStone, i) == 6) return true;
+		if (GetStoneCount(x, y, nStone, i) >= 6) return true;
 	}
 
 	return false;
@@ -758,8 +759,6 @@ void cGomoku::initBoard()
 			arrBoard[i][j] = LINE;
 		}
 	}
-
-	arrBoard[CENTER][CENTER] = BLACK_STONE;
 }
 
 // 오목알 놓을 자리를 체크한다.
@@ -835,13 +834,13 @@ private:
 	// t2 : 게임이 시작 될 떄 초기화 하여
 	// 게임이 종료될 때까지 유지하면서 기준시간이 된다.
 	// t3 : 시간제한이 필요할 때 사용할 변수
-	time_t t1, t2, t3;
+	time_t t1 = clock(), t2 = clock(), t3 = clock();
 
 	// 현재 착수 할 돌
-	int curStone;
+	int curStone = BLACK_STONE;
 
 	// gomoku의 x, y와 같은 좌표를 유지한다.
-	int x, y;
+	int x = CENTER, y = CENTER;
 
 	// 무승부를 알기 위해서는 변수가 많이 필요하다.
 	// 누군가 pass를 하면 passTrigger가 On상태가 된다.
@@ -849,9 +848,9 @@ private:
 	// 연속으로 백돌과 흑돌이 연속으로 눌렀는지,
 	// 아니면 한쪽 돌만 연속으로 pass한 것인지
 	// 판단하기 위하여 stoneState는 배열을 사용한다.
-	bool passTriggerOn;
-	int passCount;
-	int stoneState[2];
+	bool passTriggerOn = false;
+	int passCount = 0;
+	int stoneState[2] = { 0, };
 
 	cGomoku white;
 	cBlackStone black;
@@ -889,7 +888,7 @@ void cGame::initGame()
 	stoneState[0] = 0;
 	stoneState[1] = 0;
 	drawTime();
-	curStone = WHITE_STONE;
+	curStone = BLACK_STONE;
 	pDraw()->printData(x, y, BLACK_STONE);
 	pDraw()->showMsg(curStone);
 	pGomoku[curStone]->initGomoku();
@@ -914,10 +913,8 @@ bool cGame::playGame()
 		{
 			// 키보드 ESC가 눌리면 게임을 종료한다.
 		case FINISH: return false;
-
 			// 오목이 되었으면 승자를 알리고, 한번 더 할 것인지 물어본다.
 		case FIVEMOK: return pDraw()->endMsg(curStone);
-
 			//착수가 불가능한 곳은 메시지를 띄워 return한다.
 		case OCCUPIED:
 		case DOUBLETHREE:
@@ -927,12 +924,10 @@ bool cGame::playGame()
 			pDraw()->errMsg(result);
 			pGomoku[curStone]->setBoard(x, y);
 			break;
-
 			// 착수가 됐거나. 한수 물렸을 때 돌을 바꾼다.
 		case PASS: if (!passTriggerOn) passTriggerOn = true;
 			stoneState[curStone]++;
 		case CHANGE: changeStone(); break;
-
 		default: break;
 		}
 
@@ -1021,7 +1016,7 @@ int main()
 
 	cGame game;
 	while (game.playGame());
-	
+
 	pDraw()->CursorView(SHOW);
 
 	return 0;
