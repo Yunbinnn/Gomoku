@@ -1,4 +1,9 @@
-﻿  GomokuTest.cpp
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\GomokuTest.cpp(217,18): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\GomokuTest.cpp(217,22): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+﻿  gomoku.cpp
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(110,15): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(110,17): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(278,11): warning C4244: '=': 'time_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(284,9): warning C4477: 'printf' : 서식 문자열 '%02d'에 'int' 형식의 인수가 필요하지만 variadic 인수 3의 형식이 'time_t'입니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(284,9): message : 서식 문자열에서 '%lld'을(를) 사용하는 것이 좋습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(284,9): message : 서식 문자열에서 '%Id'을(를) 사용하는 것이 좋습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(284,9): message : 서식 문자열에서 '%I64d'을(를) 사용하는 것이 좋습니다.
   GomokuTest.vcxproj -> C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\x64\Debug\GomokuTest.exe

@@ -47,10 +47,10 @@ enum {
 
 // 바둑판의 색상, 바둑돌의 색상, 게임의 상태 등등
 enum { BLACK_STONE, WHITE_STONE, CURSOR, BLACKWIN, WHITEWIN, TIE, LINE };
-enum { OCCUPIED = 10, SAMSAM, SASA, SIXMOK, NOTUNDO, FIVEMOK, CHANGE, PASS };
+enum { OCCUPIED = 10, DOUBLETHREE, DOUBLEFOUR, SIXMOK, NOTUNDO, FIVEMOK, CHANGE, PASS };
 enum { HIDE, SHOW };
 
-/*------------------------------------화면을 그려줄 Draw class------------------------------------*/
+/*-----------------------------------------화면을 그려줄 Draw class------------------------------------------*/
 class cDraw
 {
 private:
@@ -148,6 +148,7 @@ void cDraw::showMsg(int msg)
 		"       ",
 		"흑이 승리했습니다! ",
 		"백이 승리했습니다! ",
+		"무승부입니다.     ",
 	};
 
 	SetColor(GRAY);
@@ -184,7 +185,8 @@ bool cDraw::endMsg(int stone)
 	const char* winner[] =
 	{
 		"    흑이 승리했습니다!\n    한번 더 하시겠습니까?    ",
-		"    백이 승리했습니다!\n    한번 더 하시겠습니까?    "
+		"    백이 승리했습니다!\n    한번 더 하시겠습니까?    ",
+		"    무승부입니다.\n    한번 더 하시겠습니까?    "
 	};
 
 	showMsg(stone + 3);
@@ -283,12 +285,12 @@ void cDraw::drawTime(time_t sec)
 	SetColor(GRAY);
 }
 
-/*------------------------------------렌주룰 Class------------------------------------*/
+/*-----------------------------------------------렌주룰 Class-----------------------------------------------*/
 class cRenjuRule
 {
 private:
 	int nBoard[SIZE + 2][SIZE + 2];
-	
+
 public:
 	cRenjuRule();
 	virtual ~cRenjuRule() { ; }
@@ -457,7 +459,7 @@ bool cRenjuRule::IsFour(int x, int y, int nStone, int nDir)
 	// 한 방향에 대하여 양끝을 검사하는데,
 	// 한 쌍의 좌표 중 첫번째부터 검사하기 위함이다.
 	nDir % 2 ? nDir -= 1 : nDir;
-	
+
 	// 해당 좌표에 착수한다.
 	SetStone(x, y, nStone);
 
@@ -475,10 +477,13 @@ bool cRenjuRule::IsFour(int x, int y, int nStone, int nDir)
 		// 빈 곳이 있다면 그 좌표를 받아온다.
 		if (IsEmpty(tx, ty, nStone, nDir + i))
 		{
-			// 오목이 되었다면 4이기 때문에
-			// 돌을 들어내고 참을 리턴한다.
-			SetStone(x, y, LINE);
-			return true;
+			if (IsFive(tx, ty, nStone, nDir + i))
+			{
+				// 오목이 되었다면 4이기 때문에
+				// 돌을 들어내고 참을 리턴한다.
+				SetStone(x, y, LINE);
+				return true;
+			}
 		}
 	}
 
@@ -536,7 +541,7 @@ int cRenjuRule::IsOpenFour(int x, int y, int nStone, int nDir)
 bool cRenjuRule::IsDoubleFour(int x, int y, int nStone)
 {
 	int cnt = 0;
-	
+
 	// 좌표를 중심으로 각각의 줄에 대하여 4를 검사한다.
 	for (int i = 0; i < 8; i += 2)
 	{
@@ -591,7 +596,7 @@ bool cRenjuRule::IsDoubleThree(int x, int y, int nStone)
 		if (IsOpenThree(x, y, nStone, i)) cnt++;
 
 		if (cnt >= 2) return true;
-	}			  
+	}
 
 	return false;
 }
@@ -605,14 +610,419 @@ bool cRenjuRule::IsForbidden(int x, int y, int nStone)
 	else return false;
 }
 
-/*------------------------------------게임 상태 체크를 위한 Gomoku Class------------------------------------*/
+/*-------------------------------------게임 상태 체크를 위한 Gomoku Class-------------------------------------*/
 class cGomoku
 {
+protected:
+	static int arrBoard[SIZE + 2][SIZE + 2];
+	static int x, y;
 
+	// 마지막 착수 지점
+	static int lx, ly;
+
+	// 한수 물리기 위한 플래그 변수
+	static bool undoflag;
+
+	// 커서의 깜빡임을 구현하기 위한 시간
+	static time_t t1, t2;
+
+	cRenjuRule renjurule;
+
+	bool isOccupy();
+	void undoSet();
+	void drawBoard();
+	void saveBoard(int stone);
+	void setXY(int ax, int ay);
+
+public:
+	cGomoku();
+	virtual ~cGomoku() { ; }
+
+	void setBoard(int x, int y);
+	void cursorView(int x, int y);
+	void initGomoku();
+	void initBoard();
+	int undo();
+
+	virtual int placement(int ax, int ay, int stone);
 };
+
+/*------------------------------------검은 돌 상태를 class 단위로 따로 체크------------------------------------*/
+/*---------------------Renju Rule은 검은 돌만 적용 되기 때문에 별도의 class로 분리 하였다.----------------------*/
+class cBlackStone : public cGomoku
+{
+public:
+	cBlackStone();
+	~cBlackStone() { ; }
+
+	virtual int placement(int ax, int ay, int stone);
+};
+
+int cGomoku::arrBoard[SIZE + 2][SIZE + 2] = { LINE, };
+int cGomoku::lx = 0;
+int cGomoku::ly = 0;
+int cGomoku::x = CENTER;
+int cGomoku::y = CENTER;
+time_t cGomoku::t1 = clock() - 500;
+time_t cGomoku::t2 = clock();
+bool cGomoku::undoflag = 0;
+
+cGomoku::cGomoku()
+{
+}
+
+// 오목이 시작될 때 초기화
+void cGomoku::initGomoku()
+{
+	drawBoard();
+	initBoard();
+	undoflag = 0;
+	t2 = clock();
+
+	// 1초에 한번씩 그리는데 시차를 두기 위해서
+	// 결과적으로 500ms마다 커서처럼 깜빡거리게 된다.
+	t1 = clock() - 500;
+	pDraw()->infoKey();
+}
+
+// 커서를 이동하기 전 원래 오목판을 복원한다.
+void cGomoku::setBoard(int x, int y)
+{
+	pDraw()->printData(x, y, arrBoard[y][x]);
+
+	// 커서가 이동 중 일땐 커서가 깜빡거리지 않게 한다.
+	// 멈췄을 때 얼마 시간이 지나지 않아 깜빡이도록 시간을 조절
+	t2 = clock() - 400;
+	t1 = clock() - 900;
+}
+
+// 커서를 대신해 커서처럼 보이게 한다.
+void cGomoku::cursorView(int x, int y)
+{
+	// 커서를 1초 단위로 그려준다.
+	if (clock() - t1 >= 1000)
+	{
+		pDraw()->printData(x, y, CURSOR);
+		t1 = clock();
+	}
+
+	// 커서 위치의 오목판을 1초 단위로 그려준다.
+	if (clock() - t2 >= 1000)
+	{
+		pDraw()->printData(x, y, arrBoard[y][x]);
+		t2 = clock();
+	}
+}
+
+// 한 수 물리기 위한함수
+int cGomoku::undo()
+{
+	if (!undoflag) return NOTUNDO;
+
+	pDraw()->printData(lx, ly, LINE);
+	arrBoard[ly][lx] = LINE;
+	undoflag = false;
+
+	return CHANGE;
+}
+
+void cGomoku::undoSet()
+{
+	lx = x;
+	ly = y;
+	undoflag = true;
+}
+
+// 바둑판을 그린다.
+void cGomoku::drawBoard()
+{
+	pDraw()->printNum();
+
+	for (int i = 1; i <= SIZE; i++)
+	{
+		for (int j = 1; j <= SIZE; j++)
+		{
+			pDraw()->printData(j, i, LINE);
+		}
+	}
+}
+
+// 돌이 놓이면 배열에 흑, 백돌을 저장한다.
+// 처음 흑돌을 중앙에 한 수 놓고 시작한다.
+void cGomoku::initBoard()
+{
+	for (int i = 0; i < SIZE + 2; i++)
+	{
+		for (int j = 0; j <= SIZE + 2; j++)
+		{
+			arrBoard[i][j] = LINE;
+		}
+	}
+
+	arrBoard[CENTER][CENTER] = BLACK_STONE;
+}
+
+// 오목알 놓을 자리를 체크한다.
+bool cGomoku::isOccupy()
+{
+	return arrBoard[y][x] != LINE;
+}
+
+// 오목알이 착수 되면 보드에 오목알을 그리고
+// 보드 배열에 저장한다.
+void cGomoku::saveBoard(int stone)
+{
+	pDraw()->printData(x, y, stone);
+	arrBoard[y][x] = stone;
+	undoSet();
+}
+
+// Game class에서 받아온 좌표를 저장한다.
+void cGomoku::setXY(int ax, int ay)
+{
+	x = ax;
+	y = ay;
+}
+
+// 착수를 위한변수
+// 착수가 가능한지 체크하고,
+// 착수가 되면 저장을 한다.
+// 다음으로 오목인지 검사하여 결과값을 반환한다.
+int cGomoku::placement(int ax, int ay, int nStone)
+{
+	setXY(ax, ay);
+	if (isOccupy()) return OCCUPIED;
+
+	int returnValue = CHANGE;
+	renjurule.SetBoard(arrBoard);
+	if (renjurule.IsFive(x, y, nStone) || renjurule.IsSix(x, y, nStone)) returnValue = FIVEMOK;
+	saveBoard(nStone);
+
+	return returnValue;
+}
+
+/*------------------------------------검은 돌 상태를 class 단위로 따로 체크------------------------------------*/
+/*---------------------Renju Rule은 검은 돌만 적용 되기 때문에 별도의 class로 분리 하였다.----------------------*/
+cBlackStone::cBlackStone()
+{
+}
+
+int cBlackStone::placement(int ax, int ay, int nStone)
+{
+	setXY(ax, ay);
+	if (isOccupy()) return OCCUPIED;
+
+	renjurule.SetBoard(arrBoard);
+	if (renjurule.IsFive(x, y, nStone))
+	{
+		saveBoard(nStone);
+		return FIVEMOK;
+	}
+	else if (renjurule.IsSix(x, y, nStone)) return SIXMOK;
+	else if (renjurule.IsDoubleFour(x, y, nStone))  return DOUBLEFOUR;
+	else if (renjurule.IsDoubleThree(x, y, nStone)) return DOUBLETHREE;
+
+	saveBoard(nStone);
+	return CHANGE;
+}
+
+/*--------------------------------전체적인 오목의 진행을 전담하는 Game Class-----------------------------------*/
+class cGame
+{
+private:
+	// t1 : 1초마다 화면에 시간을 표시해주기 위한 변수
+	// 매초마다 초기화를 해줌
+	// t2 : 게임이 시작 될 떄 초기화 하여
+	// 게임이 종료될 때까지 유지하면서 기준시간이 된다.
+	// t3 : 시간제한이 필요할 때 사용할 변수
+	time_t t1, t2, t3;
+
+	// 현재 착수 할 돌
+	int curStone;
+
+	// gomoku의 x, y와 같은 좌표를 유지한다.
+	int x, y;
+
+	// 무승부를 알기 위해서는 변수가 많이 필요하다.
+	// 누군가 pass를 하면 passTrigger가 On상태가 된다.
+	// 그럼 passCounter가 시작되고
+	// 연속으로 백돌과 흑돌이 연속으로 눌렀는지,
+	// 아니면 한쪽 돌만 연속으로 pass한 것인지
+	// 판단하기 위하여 stoneState는 배열을 사용한다.
+	bool passTriggerOn;
+	int passCount;
+	int stoneState[2];
+
+	cGomoku white;
+	cBlackStone black;
+
+	cGomoku* pGomoku[2];
+
+	bool checkTie();
+	void drawTime();
+	void initGame();
+	void changeStone();
+	int getKey();
+	int checkKey();
+
+public:
+	cGame();
+	~cGame() { ; }
+
+	bool playGame();
+};
+
+cGame::cGame()
+{
+	pGomoku[0] = &black;
+	pGomoku[1] = &white;
+}
+
+// 게임이 시작할 때 필요한 변수들을 초기화 하고,
+// 화면에 표시해준다.
+void cGame::initGame()
+{
+	x = y = CENTER;
+	t1 = t2 = clock();
+	passTriggerOn = false;
+	passCount = 0;
+	stoneState[0] = 0;
+	stoneState[1] = 0;
+	drawTime();
+	curStone = WHITE_STONE;
+	pDraw()->printData(x, y, BLACK_STONE);
+	pDraw()->showMsg(curStone);
+	pGomoku[curStone]->initGomoku();
+	pGomoku[curStone]->cursorView(x, y);
+}
+
+// main함수에서 이 함수를 호출하면 게임이 시작된다.
+bool cGame::playGame()
+{
+	int result;
+
+	system("cls");
+	initGame();
+	while (true)
+	{
+		// 1초마다 화면에 시간을 표시한다.
+		if (clock() - t1 >= 1000) drawTime();
+
+		result = checkKey();
+
+		switch (result)
+		{
+			// 키보드 ESC가 눌리면 게임을 종료한다.
+		case FINISH: return false;
+
+			// 오목이 되었으면 승자를 알리고, 한번 더 할 것인지 물어본다.
+		case FIVEMOK: return pDraw()->endMsg(curStone);
+
+			//착수가 불가능한 곳은 메시지를 띄워 return한다.
+		case OCCUPIED:
+		case DOUBLETHREE:
+		case DOUBLEFOUR:
+		case SIXMOK:
+		case NOTUNDO:
+			pDraw()->errMsg(result);
+			pGomoku[curStone]->setBoard(x, y);
+			break;
+
+			// 착수가 됐거나. 한수 물렸을 때 돌을 바꾼다.
+		case PASS: if (!passTriggerOn) passTriggerOn = true;
+			stoneState[curStone]++;
+		case CHANGE: changeStone(); break;
+
+		default: break;
+		}
+
+		pGomoku[curStone]->cursorView(x, y);
+		if (checkTie()) return pDraw()->endMsg(TIED);
+		Sleep(20);
+	}
+}
+
+// 흑과 백의 차례를 바꾼다.
+void cGame::changeStone()
+{
+	// 흑백 둘이니 더해서 2로 나누면 교환이 된다.
+	curStone = (curStone + 1) % 2;
+
+	// 현재 돌의 차례를 알려준다.
+	pDraw()->showMsg(curStone);
+	if (passTriggerOn) passCount++;
+}
+
+bool cGame::checkTie()
+{
+	if (!passTriggerOn) return false;
+
+	bool isTied = false;
+	if (passCount == 2)
+	{
+		if (stoneState[0] == 1 && stoneState[1] == 1) isTied = true;
+		passTriggerOn = false;
+		passCount = 0;
+		stoneState[0] = 0;
+		stoneState[1] = 0;
+	}
+	return isTied;
+}
+
+// 1초마다 화면에 시간을 표시한다.
+void cGame::drawTime()
+{
+	time_t sec = (clock() - t2) / 1000;
+	pDraw()->drawTime(sec);
+	t1 = clock();
+}
+
+int cGame::getKey()
+{
+	int ch = _getch();
+	if (ch == 0 || ch == 0xE0) ch = _getch();
+
+	return ch;
+}
+
+int cGame::checkKey()
+{
+	int ch, dx, dy;;
+
+	if (_kbhit()) ch = getKey();
+	else return 0;
+
+	dx = dy = 0;
+	switch (ch)
+	{
+	case UP: --dy; break;
+	case DOWN: ++dy; break;
+	case LEFT: --dx; break;
+	case RIGHT: ++dx; break;
+
+	case DEL: return PASS;
+	case ESC: return FINISH;
+	case ' ': return pGomoku[curStone]->placement(x, y, curStone);
+	case 'u':
+	case 'U': return pGomoku[curStone]->undo();
+	default: break;
+	}
+	pGomoku[curStone]->setBoard(x, y);
+	y += dy;
+	x += dx;
+	pDraw()->printData(x, y, CURSOR);
+
+	return 0;
+}
 
 int main()
 {
+	pDraw()->CursorView(HIDE);
+
+	cGame game;
+	while (game.playGame());
+	
+	pDraw()->CursorView(SHOW);
 
 	return 0;
 }
