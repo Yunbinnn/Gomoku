@@ -50,40 +50,40 @@ C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(855,10): warning C4820: '
 C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(177): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(174) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(177) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(425): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(423) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(425) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(448): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(446) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(448) : 참고: 이 줄에서 호출 피드
 C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(236): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(233) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(236) : 참고: 이 줄에서 호출 피드
 C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(229): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(226) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(229) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(448): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(446) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(448) : 참고: 이 줄에서 호출 피드
 C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(481): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(468) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(481) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(517): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(510) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(517) : 참고: 이 줄에서 호출 피드
 C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(479): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(468) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(479) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(425): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(423) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(425) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(577): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(567) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(577) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(572): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(567) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(572) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(515): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(510) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(515) : 참고: 이 줄에서 호출 피드
 C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(597): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(595) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(597) : 참고: 이 줄에서 호출 피드
 C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(550): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(547) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
   C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(550) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(517): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(510) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(517) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(515): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(510) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(515) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(577): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(567) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(577) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(572): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(567) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(572) : 참고: 이 줄에서 호출 피드
   GomokuTest.vcxproj -> C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\x64\Debug\GomokuTest.exe

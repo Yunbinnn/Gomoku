@@ -7,15 +7,15 @@
 #pragma region 키입력 전처리 지정
 
 #define BACK_SPACE 8
-#define	ENTER 13
-#define	ESC	27
-#define UP 72
-#define DOWN 80
-#define LEFT 75
-#define RIGHT 77
-#define PAGE_UP 73
-#define PAGE_DOWN 81
-#define DEL 83
+#define	ENTER      13
+#define	ESC	       27
+#define UP         72
+#define DOWN       80
+#define LEFT       75
+#define RIGHT      77
+#define PAGE_UP    73
+#define PAGE_DOWN  81
+#define DEL        83
 
 #pragma endregion
 
@@ -40,10 +40,10 @@ enum {
 };
 
 // 오목판의 크기
-#define SIZE 15
+#define SIZE   15
 #define CENTER ((SIZE + 2) / 2)
 #define FINISH -1
-#define TIED 2
+#define TIED   2
 
 // 바둑판의 색상, 바둑돌의 색상, 게임의 상태 등등
 enum { BLACK_STONE, WHITE_STONE, CURSOR, BLACKWIN, WHITEWIN, TIE, LINE };
@@ -94,7 +94,7 @@ cDraw::cDraw()
 void cDraw::CursorView(char show)
 {
 	HANDLE hConsole;
-	CONSOLE_CURSOR_INFO ConsoleCursor;
+	CONSOLE_CURSOR_INFO ConsoleCursor{};
 
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -107,7 +107,7 @@ void cDraw::CursorView(char show)
 // x, y 좌표로 커서를 움직이는 함수
 void cDraw::gotoxy(int x, int y)
 {
-	COORD XY = { static_cast<short>(x),static_cast<short>(y) };
+	COORD XY = { (short)x,(short)y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), XY);
 }
 
@@ -129,7 +129,8 @@ void cDraw::SetColor(int color, int bgcolor)
 void cDraw::errMsg(int msg)
 {
 	msg -= 10;
-	const char* str[] = {
+	const char* str[] =
+	{
 		"이미 돌이 놓여 있습니다.\n다른 곳에 착수하세요.",
 		"쌍삼 입니다.\n다른 곳에 착수하세요.",
 		"쌍사 입니다.\n다른 곳에 착수하세요.",
@@ -159,7 +160,8 @@ void cDraw::showMsg(int msg)
 // 입력 가능한 키들 설명 UI를 띄움
 void cDraw::infoKey()
 {
-	const char* str[] = {
+	const char* str[] =
+	{
 		"스페이스바 : 착  수",
 		"방  향  키 : 이  동",
 		"    U      : 무르기",
@@ -682,7 +684,7 @@ void cGomoku::initGomoku()
 
 	// 1초에 한번씩 그리는데 시차를 두기 위해서
 	// 결과적으로 500ms마다 커서처럼 깜빡거리게 된다.
-	t1 = clock() - 500;
+	t1 = static_cast<time_t>(clock()) - 500;
 	pDraw()->infoKey();
 }
 
@@ -693,8 +695,8 @@ void cGomoku::setBoard(int x, int y)
 
 	// 커서가 이동 중 일땐 커서가 깜빡거리지 않게 한다.
 	// 멈췄을 때 얼마 시간이 지나지 않아 깜빡이도록 시간을 조절
-	t2 = clock() - 400;
-	t1 = clock() - 900;
+	t2 = static_cast<time_t>(clock()) - 400;
+	t1 = static_cast<time_t>(clock()) - 900;
 }
 
 // 커서를 대신해 커서처럼 보이게 한다.
