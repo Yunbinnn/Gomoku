@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <time.h>
 
-#pragma region 키입력 전처리 지정
+#pragma region 키입력 전처리기 지정
 
 #define BACK_SPACE 8
 #define	ENTER      13
@@ -13,8 +13,6 @@
 #define DOWN       80
 #define LEFT       75
 #define RIGHT      77
-#define PAGE_UP    73
-#define PAGE_DOWN  81
 #define DEL        83
 
 #pragma endregion
@@ -45,12 +43,12 @@ enum {
 #define FINISH -1
 #define TIED   2
 
-// 바둑판의 색상, 바둑돌의 색상, 게임의 상태 등등
+// 오목판의 색상, 돌의 색상, 게임의 상태 등등
 enum { BLACK_STONE, WHITE_STONE, CURSOR, BLACKWIN, WHITEWIN, TIE, LINE };
 enum { OCCUPIED = 10, DOUBLETHREE, DOUBLEFOUR, SIXMOK, NOTUNDO, FIVEMOK, CHANGE, PASS };
 enum { HIDE, SHOW };
 
-/*-----------------------------------------화면을 그려줄 Draw class------------------------------------------*/
+/*---------------------------------화면을 그려줄 Draw 클래스----------------------------------*/
 class cDraw
 {
 private:
@@ -132,9 +130,9 @@ void cDraw::errMsg(int msg)
 	const char* str[] =
 	{
 		"이미 돌이 놓여 있습니다.\n다른 곳에 착수하세요.",
-		"쌍삼 입니다.\n다른 곳에 착수하세요.",
-		"쌍사 입니다.\n다른 곳에 착수하세요.",
-		"흑은 육목을 둘 수 없습니다.\n다른 곳에 착수하세요.",
+		"33 금수 입니다.\n다른 곳에 착수하세요.",
+		"44 금수 입니다.\n다른 곳에 착수하세요.",
+		"흑은 장목을 둘 수 없습니다.\n다른 곳에 착수하세요.",
 		"한 수만 물릴 수 있습니다"
 	};
 	MessageBox(NULL, str[msg], "Warning!", MB_OK);
@@ -196,7 +194,7 @@ bool cDraw::endMsg(int stone)
 	else return false;
 }
 
-// 바둑판과 돌을 콘솔 창에 그림
+// 오목판과 돌을 콘솔 창에 그림
 void cDraw::printData(int& x, int& y, int type)
 {
 	if (x < 1) x = 1;
@@ -288,7 +286,7 @@ void cDraw::drawTime(time_t sec)
 	SetColor(GRAY);
 }
 
-/*-----------------------------------------------렌주룰 Class-----------------------------------------------*/
+/*---------------------------------------렌주룰 클래스---------------------------------------*/
 class cRenjuRule
 {
 private:
@@ -320,14 +318,14 @@ cRenjuRule::cRenjuRule()
 {
 	for (int i = 0; i < SIZE + 2; i++)
 	{
-		// 바둑판 밖의 배열의 끝을 다른 숫자로
+		// 오목판 밖의 배열의 끝을 다른 숫자로
 		// 나타냄으로써 경계를 표시한다.
 		nBoard[i][0] = nBoard[i][SIZE + 1] = -1;
 		nBoard[0][i] = nBoard[SIZE + 1][i] = -1;
 	}
 }
 
-// 착수하기 전의 바둑판 상태를 미리 복사해둠
+// 착수하기 전의 오목판 상태를 미리 복사해둠
 void cRenjuRule::SetBoard(int(*arr)[SIZE + 2])
 {
 	for (int i = 1; i <= SIZE; i++)
@@ -369,7 +367,7 @@ bool cRenjuRule::IsEmpty(int& x, int& y, int nStone, int nDir)
 	for (; nBoard[y][x] == nStone; x += dx, y += dy);
 
 	// nStone이 아니라 해서 전부 LINE이라 할 수 없다.
-	// 다른 돌이거나 바둑판을 벗어난 곳 일수도 있으니
+	// 다른 돌이거나 오목판을 벗어난 곳 일수도 있으니
 	// 그곳이 LINE일 때만 참을 반환한다.
 	if (nBoard[y][x] == LINE) return true;
 	else return false;
@@ -613,7 +611,7 @@ bool cRenjuRule::IsForbidden(int x, int y, int nStone)
 	else return false;
 }
 
-/*-------------------------------------게임 상태 체크를 위한 Gomoku Class-------------------------------------*/
+/*-----------------------------오목 게임 구성을 위한 Gomoku 클래스----------------------------*/
 class cGomoku
 {
 protected:
@@ -650,8 +648,8 @@ public:
 	virtual int placement(int ax, int ay, int stone);
 };
 
-/*------------------------------------검은 돌 상태를 class 단위로 따로 체크------------------------------------*/
-/*---------------------Renju Rule은 검은 돌만 적용 되기 때문에 별도의 class로 분리 하였다.----------------------*/
+/*----------------------------검은 돌 상태를 클해스 단위로 따로 체크---------------------------*/
+/*-------------Renju Rule은 검은 돌만 적용 되기 때문에 별도의 클래스로 분리 하였다.--------------*/
 class cBlackStone : public cGomoku
 {
 public:
@@ -736,7 +734,7 @@ void cGomoku::undoSet()
 	undoflag = true;
 }
 
-// 바둑판을 그린다.
+// 오목판을 그린다.
 void cGomoku::drawBoard()
 {
 	pDraw()->printNum();
@@ -751,7 +749,6 @@ void cGomoku::drawBoard()
 }
 
 // 돌이 놓이면 배열에 흑, 백돌을 저장한다.
-// 처음 흑돌을 중앙에 한 수 놓고 시작한다.
 void cGomoku::initBoard()
 {
 	for (int i = 0; i < SIZE + 2; i++)
@@ -802,8 +799,8 @@ int cGomoku::placement(int ax, int ay, int nStone)
 	return returnValue;
 }
 
-/*------------------------------------검은 돌 상태를 class 단위로 따로 체크------------------------------------*/
-/*---------------------Renju Rule은 검은 돌만 적용 되기 때문에 별도의 class로 분리 하였다.----------------------*/
+/*----------------------------검은 돌 상태를 클래스 단위로 따로 체크---------------------------*/
+/*-------------Renju Rule은 검은 돌만 적용 되기 때문에 별도의 클래스로 분리 하였다.--------------*/
 cBlackStone::cBlackStone()
 {
 }
@@ -827,7 +824,7 @@ int cBlackStone::placement(int ax, int ay, int nStone)
 	return CHANGE;
 }
 
-/*--------------------------------전체적인 오목의 진행을 전담하는 Game Class-----------------------------------*/
+/*------------------------전체적인 오목의 진행을 전담하는 Game 클래스--------------------------*/
 class cGame
 {
 private:
@@ -835,14 +832,13 @@ private:
 	// 매초마다 초기화를 해줌
 	// t2 : 게임이 시작 될 떄 초기화 하여
 	// 게임이 종료될 때까지 유지하면서 기준시간이 된다.
-	// t3 : 시간제한이 필요할 때 사용할 변수
-	time_t t1 = clock(), t2 = clock(), t3 = clock();
+	time_t t1, t2;
 
 	// 현재 착수 할 돌
-	int curStone = BLACK_STONE;
+	int curStone;
 
 	// gomoku의 x, y와 같은 좌표를 유지한다.
-	int x = CENTER, y = CENTER;
+	int x, y;
 
 	// 무승부를 알기 위해서는 변수가 많이 필요하다.
 	// 누군가 pass를 하면 passTrigger가 On상태가 된다.
@@ -850,8 +846,8 @@ private:
 	// 연속으로 백돌과 흑돌이 연속으로 눌렀는지,
 	// 아니면 한쪽 돌만 연속으로 pass한 것인지
 	// 판단하기 위하여 stoneState는 배열을 사용한다.
-	bool passTriggerOn = false;
-	int passCount = 0;
+	bool passTriggerOn;
+	int passCount;
 	int stoneState[2] = { 0, };
 
 	cGomoku white;
@@ -875,6 +871,11 @@ public:
 
 cGame::cGame()
 {
+	x = y = CENTER;
+	t1 = t2 = clock();
+	curStone = BLACK_STONE;
+	passTriggerOn = false;
+	passCount = 0;
 	pGomoku[0] = &black;
 	pGomoku[1] = &white;
 }

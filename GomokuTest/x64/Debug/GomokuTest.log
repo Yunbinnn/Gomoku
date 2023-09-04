@@ -27,63 +27,63 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\winioctl.h(16168,
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\winioctl.h(16317,22): warning C4668: '_WIN32_WINNT_WIN10_RS4'은(는) 전처리기 매크로로 정의되어 있지 않으므로 '#if/#elif'에 해당하는 '0'으로 바뀝니다.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\winioctl.h(16330,22): warning C4668: '_WIN32_WINNT_WIN10_RS4'은(는) 전처리기 매크로로 정의되어 있지 않으므로 '#if/#elif'에 해당하는 '0'으로 바뀝니다.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\winioctl.h(16559,22): warning C4668: '_WIN32_WINNT_WIN10_RS1'은(는) 전처리기 매크로로 정의되어 있지 않으므로 '#if/#elif'에 해당하는 '0'으로 바뀝니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(117,59): warning C4242: '인수': 'int'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(117,59): warning C4365: '인수': 'int'에서 'WORD'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(125,74): warning C4244: '인수': 'int'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(125,74): warning C4365: '인수': 'int'에서 'WORD'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(177,15): warning C4774: 'printf' : 1 인수에 필요한 서식 문자열은 문자열 리터럴이 아닙니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(177,15): message : 'name'의 서식 지정자가 보안 문제를 발생시킬 수 있으므로 예를 들어 printf(name); 대신에 printf("%s", name);를 사용합니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(177,15): message : 명명된 문자열 리터럴에 constexpr 지정자를 사용하는 것이 좋습니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(279,38): warning C4365: '=': 'unsigned int'에서 'int'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(280,47): warning C4365: '=': 'unsigned int'에서 'int'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(315,1): warning C4820: 'cRenjuRule': '4' 바이트 패딩이 데이터 멤버 'cRenjuRule::nBoard' 다음에 추가됨
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(690,28): warning C4458: 'x' 선언은 클래스 멤버를 숨깁니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(619,13): message : 'cGomoku::x' 선언을 참조하십시오.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(690,35): warning C4458: 'y' 선언은 클래스 멤버를 숨깁니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(619,16): message : 'cGomoku::y' 선언을 참조하십시오.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(701,30): warning C4458: 'x' 선언은 클래스 멤버를 숨깁니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(619,13): message : 'cGomoku::x' 선언을 참조하십시오.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(701,37): warning C4458: 'y' 선언은 클래스 멤버를 숨깁니다.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(619,16): message : 'cGomoku::y' 선언을 참조하십시오.
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(852,6): warning C4820: 'cGame': '3' 바이트 패딩이 데이터 멤버 'cGame::passTriggerOn' 다음에 추가됨
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(855,10): warning C4820: 'cGame': '4' 바이트 패딩이 데이터 멤버 'cGame::stoneState' 다음에 추가됨
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(177): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(174) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(177) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(425): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(423) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(425) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(448): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(446) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(448) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(236): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(233) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(236) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(229): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(226) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(229) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(481): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(468) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(481) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(517): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(510) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(517) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(479): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(468) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(479) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(515): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(510) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(515) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(597): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(595) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(597) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(550): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(547) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(550) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(577): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(567) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(577) : 참고: 이 줄에서 호출 피드
-C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(572): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(567) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
-  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(572) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(115,59): warning C4242: '인수': 'int'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(115,59): warning C4365: '인수': 'int'에서 'WORD'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(124,74): warning C4244: '인수': 'int'에서 'WORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(124,74): warning C4365: '인수': 'int'에서 'WORD'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(178,15): warning C4774: 'printf' : 1 인수에 필요한 서식 문자열은 문자열 리터럴이 아닙니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(178,15): message : 'name'의 서식 지정자가 보안 문제를 발생시킬 수 있으므로 예를 들어 printf(name); 대신에 printf("%s", name);를 사용합니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(178,15): message : 명명된 문자열 리터럴에 constexpr 지정자를 사용하는 것이 좋습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(280,38): warning C4365: '=': 'unsigned int'에서 'int'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(281,47): warning C4365: '=': 'unsigned int'에서 'int'(으)로의 변환입니다. signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(316,1): warning C4820: 'cRenjuRule': '4' 바이트 패딩이 데이터 멤버 'cRenjuRule::nBoard' 다음에 추가됨
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(691,28): warning C4458: 'x' 선언은 클래스 멤버를 숨깁니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(620,13): message : 'cGomoku::x' 선언을 참조하십시오.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(691,35): warning C4458: 'y' 선언은 클래스 멤버를 숨깁니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(620,16): message : 'cGomoku::y' 선언을 참조하십시오.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(702,30): warning C4458: 'x' 선언은 클래스 멤버를 숨깁니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(620,13): message : 'cGomoku::x' 선언을 참조하십시오.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(702,37): warning C4458: 'y' 선언은 클래스 멤버를 숨깁니다.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(620,16): message : 'cGomoku::y' 선언을 참조하십시오.
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(851,6): warning C4820: 'cGame': '3' 바이트 패딩이 데이터 멤버 'cGame::passTriggerOn' 다음에 추가됨
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(854,10): warning C4820: 'cGame': '4' 바이트 패딩이 데이터 멤버 'cGame::stoneState' 다음에 추가됨
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(178): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(175) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(178) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(237): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(234) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(237) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(230): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(227) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(230) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(426): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(424) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(426) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(449): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(447) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(449) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(551): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(548) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(551) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(598): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(596) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(598) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(482): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(469) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(482) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(480): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(469) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(480) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(578): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(568) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(578) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(518): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(511) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(518) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(573): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(568) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(573) : 참고: 이 줄에서 호출 피드
+C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(516): warning C5045: 컴파일러는 /Qspectre 스위치가 지정된 경우 메모리 로드를 위해 스펙터 완화를 삽입합니다.
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(511) : 참고: 이 줄에서 비교에 의해 검사된 인덱스 'i' 범위
+  C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\gomoku.cpp(516) : 참고: 이 줄에서 호출 피드
   GomokuTest.vcxproj -> C:\Users\A\Desktop\Gomoku\Gomoku\GomokuTest\x64\Debug\GomokuTest.exe
