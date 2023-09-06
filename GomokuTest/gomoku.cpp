@@ -38,7 +38,7 @@ enum {
 };
 
 // 오목판의 크기
-#define SIZE   15
+#define SIZE   19
 #define CENTER ((SIZE + 2) / 2)
 #define FINISH -1
 #define TIED   2
@@ -892,7 +892,6 @@ void cGame::initGame()
 	stoneState[1] = 0;
 	drawTime();
 	curStone = BLACK_STONE;
-	pDraw()->printData(x, y, BLACK_STONE);
 	pDraw()->showMsg(curStone);
 	pGomoku[curStone]->initGomoku();
 	pGomoku[curStone]->cursorView(x, y);
